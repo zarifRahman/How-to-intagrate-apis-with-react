@@ -1,1 +1,1 @@
-# How-to-intagrate-apis-with-react
+# How-to-integrate-apis-with-react
