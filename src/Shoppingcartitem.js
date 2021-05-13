@@ -1,25 +1,37 @@
 import React from "react";
-import CartStore from "./CartStore";
+import { updateCart, deleteCart } from "./CartHelper";
+import { useDispatch } from "react-redux";
 
 export default function Shoppingcartitem({ event }) {
+  const dispatch = useDispatch();
   return (
     <tr className="align-middle">
       <td>
-        { new Date(event.date).toLocaleString() }<br />{ event.name }<br />{ event.artist }
+        {new Date(event.date).toLocaleString()}
+        <br />
+        {event.name}
+        <br />
+        {event.artist}
       </td>
-      <td className="max-50">
-        ${ event.price }
-      </td>
+      <td className="max-50">${event.price}</td>
       <td className="max-50">
         <div className="btn-group">
-          <input type="number" className="w-auto" value={ event.quantity } onChange={(e) => CartStore.dispatch({ type: "update", payload: { ...event, quantity: parseInt(e.target.value) }})} />
+          <input
+            type="number"
+            className="w-auto"
+            value={event.quantity}
+            onChange={(e) =>
+              dispatch(updateCart(event.event_id, parseInt(e.target.value)))
+            }
+          />
         </div>
       </td>
+      <td>${event.quantity * event.price}</td>
       <td>
-        ${ event.quantity * event.price }
-      </td>
-      <td>
-        <button className="btn btn-link" onClick={() => CartStore.dispatch({ type: "delete", payload: event})}>
+        <button
+          className="btn btn-link"
+          onClick={() => dispatch(deleteCart(event.event_id))}
+        >
           <span className="bi bi-trash-fill font-large text-dark"></span>
         </button>
       </td>
