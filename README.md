@@ -59,3 +59,36 @@ axios.post(
 ```
 
 [Axios Doc](https://github.com/axios/axios)
+
+### React Query
+
+##### npm install react-query
+
+```
+import
+{ QueryClient, QueryClientProvider }
+from "react-query";
+
+function App() {
+  return (
+  <QueryClientProvider
+    client={queryClient}>
+  </QueryClientProvider>
+)
+}
+```
+
+```
+const query = useQuery(   // React Query hook
+"events",                 // Hook key
+() => axios.get(url)      // Async function returning Promise
+);
+query == { status, data, error, isLoading } // Structure of returned data
+if (isLoading) {  // Message while loading
+  return ( <div>Loading ...</div>);
+}
+return (
+  query.data.map(...)   // Output once data is available
+);
+
+```
