@@ -1,5 +1,5 @@
 # Learn API integration with react
-##### To get access to the api of this project, run global-ticket-api with ```node index.js ``` 
+##### To get access to the api of this project, run global-ticket-api from another repository with ```node index.js ``` 
 
 ### HTTP Request Options
 
